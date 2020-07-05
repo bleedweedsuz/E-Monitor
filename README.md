@@ -13,26 +13,32 @@ $ npm install react-native-selectmultiple-button --save
 ```
 
 ####Used Library in this project
-https://github.com/GeekyAnts/NativeBase - automatic!
-[GitHub](https://github.com/GeekyAnts/NativeBase)
 
 #####Native Base
-
+[GitHub](https://github.com/GeekyAnts/NativeBase)
 
 #####React Navigation 5
+[GitHub](https://github.com/react-navigation)
+[Website](https://reactnavigation.org/)
 
 #####Moment
+[GitHub](https://github.com/moment/moment)
+[Website](https://momentjs.com/)
 
 #####React Native Maps
+[GitHub](https://github.com/react-native-community/react-native-maps)
 
 #####React Native Typography
+[GitHub](https://github.com/hectahertz/react-native-typography)
 
 #####Reanimated Bottom Sheet
+[GitHub](https://github.com/osdnk/react-native-reanimated-bottom-sheet)
 
 #####React Native Collapsible Header Views
+[GitHub](https://github.com/iyegoroff/react-native-collapsible-header-views)
 
 #####React Native Select Multiple Button
-
+[GitHub](https://github.com/danceyoung/react-native-selectmultiple-button)
 
 
 
