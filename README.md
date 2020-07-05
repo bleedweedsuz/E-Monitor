@@ -51,6 +51,6 @@ $ npm install react-native-selectmultiple-button --save
 * Add Detail view for earthquake information
 * Add inbuild webview for view USGS information
 
-#### Playstore and App store Links
+#### Playstore and App Store Links
 
 update coming soon..
