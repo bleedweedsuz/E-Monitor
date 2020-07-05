@@ -3,7 +3,7 @@ E-Monitor i.e. Earthquake Monitor is an app that gives information about real-ti
 
 #### Installation
 ```
-$ cd project_directory_root E-Monitor
+$ cd project_directory_root/E-Monitor
 $ cd EarthquakeMonitor
 
 //this will install all the dependencies automatically
