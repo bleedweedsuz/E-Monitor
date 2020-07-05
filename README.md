@@ -1,7 +1,7 @@
 # E-Monitor
 E-Monitor i.e. Earthquake Monitor is an app that gives information about real-time earthquake data from all over the world.
 
-#### to run this project
+#### To run this project
 ```
 //this will install all the dependencies automatically
 $ npm install
