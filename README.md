@@ -9,7 +9,8 @@ $ cd EarthquakeMonitor
 //this will install all the dependencies automatically
 $ npm install
 
-//react-native-selectmultiple-button will gives error or will stuck in downloading page, to remove this error we have to install "react-native-selectmultiple-button" manually
+//react-native-selectmultiple-button will gives error or will stuck in downloading page
+//to remove this error we have to install "react-native-selectmultiple-button" manually
 
 $ npm install react-native-selectmultiple-button --save
 ```
