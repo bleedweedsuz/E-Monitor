@@ -1,0 +1,43 @@
+{
+  "expo": {
+    "name": "E-Monitor",
+    "slug": "EarthquakeMonitor",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/logo.png",
+    "splash": {
+      "image": "./assets/drawable-xhdpi/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"],
+    "android": {
+      "splash": {
+        "resizeMode": "contain",
+        "mdpi": "./assets/drawable-mdpi/splash.png",
+        "hdpi": "./assets/drawable-hdpi/splash.png",
+        "xhdpi": "./assets/drawable-xhdpi/splash.png",
+        "xxhdpi": "./assets/drawable-xxhdpi/splash.png",
+        "xxxhdpi": "./assets/drawable-xxxhdpi/splash.png"
+      },
+      "package": "com.EarthquakeMonitor.Najuas",
+      "versionCode": 1,
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyDPTCDFktSUfswPKjqIkXZ0sm4wY_kpCJQ"
+        }
+      }
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.EarthquakeMonitor.Najuas",
+      "buildNumber": "1.0.0"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}
