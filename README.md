@@ -43,7 +43,7 @@ $ npm install react-native-selectmultiple-button --save
 ##### React Native Select Multiple Button
 [GitHub](https://github.com/danceyoung/react-native-selectmultiple-button)
 
-#### Future Features
+#### Upcoming Version Features
 * Real time earthquake information updates
 * Set Alarm for specific location (using lat and long)
 * Sharing earthquake information into different apps
