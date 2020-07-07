@@ -47,12 +47,12 @@ $ npm install react-native-selectmultiple-button --save
 [GitHub](https://github.com/jfilter/react-native-onboarding-swiper)
 
 #### Upcoming Version Features
-* Real time earthquake information updates
-* Set Alarm for specific location (using lat and long)
-* Sharing earthquake information into different apps
-[*] Overlay for filter dialog box
-* Add Detail view for earthquake information
-* Add inbuild webview for view USGS information
+- [ ] Real time earthquake information updates
+- [ ] Set Alarm for specific location (using lat and long)
+- [ ] Sharing earthquake information into different apps
+- [x] Overlay for filter dialog box
+- [ ] Add Detail view for earthquake information
+- [ ] Add inbuild webview for view USGS information
 
 #### Playstore and App Store Links
 
