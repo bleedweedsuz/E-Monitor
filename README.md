@@ -43,11 +43,14 @@ $ npm install react-native-selectmultiple-button --save
 ##### React Native Select Multiple Button
 [GitHub](https://github.com/danceyoung/react-native-selectmultiple-button)
 
+##### React Native Onboarding swiper
+[GitHub](https://github.com/jfilter/react-native-onboarding-swiper)
+
 #### Upcoming Version Features
 * Real time earthquake information updates
 * Set Alarm for specific location (using lat and long)
 * Sharing earthquake information into different apps
-* Overlay for filter dialog box
+[*] Overlay for filter dialog box
 * Add Detail view for earthquake information
 * Add inbuild webview for view USGS information
 
