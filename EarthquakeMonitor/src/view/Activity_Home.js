@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, StyleSheet, TouchableOpacity, Image, Dimensions, StatusBar, RefreshControl, AsyncStorage} from "react-native";
+import { Text, View, StyleSheet, TouchableOpacity, Image, Dimensions, StatusBar, RefreshControl, AsyncStorage } from "react-native";
 import { loadEarthquakeData } from "../utils/Utility";
 import { EARTHQUAKE_API_QUERY } from "../utils/Constants";
 import { CollapsibleHeaderFlatList } from "react-native-collapsible-header-views";
@@ -21,7 +21,7 @@ const BOTTOMSHEET_OFFSET = 25;
 export default class Activity_Home extends React.Component {
   _isMounted = false;
   state = {
-    isCheckingForTutorial:false,
+    isCheckingForTutorial: false,
     loading: true,
     error: false,
     ApiData: [],
@@ -58,16 +58,15 @@ export default class Activity_Home extends React.Component {
   }
 
   //check for tutorial info
-  checkTutorialPlayBack = async() => {
-    this.setState({isCheckingForTutorial:true});
-    const tutorial = await AsyncStorage.getItem('tutorial');
-    if (tutorial == null) { 
-      this.props.navigation.replace("Tutorial", {isFromHelp:false}); 
+  checkTutorialPlayBack = async () => {
+    this.setState({ isCheckingForTutorial: true });
+    const tutorial = await AsyncStorage.getItem("tutorial");
+    if (tutorial == null) {
+      this.props.navigation.replace("Tutorial", { isFromHelp: false });
+    } else {
+      this.setState({ isCheckingForTutorial: false });
     }
-    else{ 
-      this.setState({isCheckingForTutorial:false}); 
-    }
-  }
+  };
 
   //clear = async() => { await AsyncStorage.clear(); } //for test only
 
@@ -79,8 +78,8 @@ export default class Activity_Home extends React.Component {
     return (
       <ContentLoader pRows={2} tHeight={26} titleStyles={{ marginBottom: 5 }} paragraphStyles={{ marginTop: 5 }} pHeight={[17, 14]} tWidth={80} pWidth={Dimensions.get("window").width - 60} containerStyles={{ paddingLeft: 20, paddingRight: 20, paddingTop: 18, backgroundColor: "#f8f8f8", elevation: 3.5, marginLeft: 8.5, height: 117, width: Dimensions.get("window").width - 17, borderRadius: 10, marginTop: 10, marginBottom: 5 }} active loading={this.state.loading}>
         <TouchableOpacity activeOpacity={0.7} onPress={() => this.onItemClick(item)}>
-          <Card style={{ marginLeft: 8, marginRight: 8, borderRadius: 10, marginTop: 10, backgroundColor: "#f8f8f8" }}>
-            <CardItem style={{ borderRadius: 10, backgroundColor: "#f8f8f8" }}>
+          <Card style={{ marginLeft: 8, marginRight: 8, borderRadius: 10, marginTop: 10, backgroundColor: "#fff" }}>
+            <CardItem style={{ borderRadius: 10, backgroundColor: "#fff" }}>
               <Body>
                 <View>
                   <Text style={[material.display1, styles.display1]}>{"M " + Number(item.properties.mag).toFixed(1)}</Text>
@@ -102,7 +101,7 @@ export default class Activity_Home extends React.Component {
 
   bs = React.createRef();
   onFilterClick = () => {
-    this.setState({ bottomSheetContainerOpacity: 1, zindex_animatedView:10 });
+    this.setState({ bottomSheetContainerOpacity: 1, zindex_animatedView: 10 });
     this.bs.current.snapTo(3);
   };
 
@@ -227,7 +226,7 @@ export default class Activity_Home extends React.Component {
   //prettier-ignore
   render(){
     return (
-      <View style={{ flex: 1, backgroundColor: "#f8f8f8"}}>
+      <View style={{ flex: 1, backgroundColor: "#fff"}}>
         {
           this.state.isCheckingForTutorial?
             null
@@ -238,7 +237,7 @@ export default class Activity_Home extends React.Component {
                 <CollapsibleHeaderFlatList
                   disableVirtualization={true}
                   CollapsibleHeaderComponent={
-                    <View style={{ height: 100, backgroundColor: "#f8f8f8", paddingTop: 40 }}>
+                    <View style={{ height: 100, backgroundColor: "#fff", paddingTop: 40 }}>
                       <View style={{ flexDirection: "row" }}>
                         <Image style={{ width: 37, height: 37, marginLeft: 15, resizeMode: "center" }} source={require("../../assets/logo-inside.png")} />
                         <View style={{ flex: 1, paddingRight: 18 }}>

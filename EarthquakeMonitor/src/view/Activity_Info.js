@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 import { View, StatusBar, StyleSheet, Linking, Image, Text } from "react-native";
 import { useHeaderHeight } from "@react-navigation/stack";
-import { Card, CardItem, Body, Container, Header, Content, Thumbnail, Button, Icon, Left } from "native-base";
+import { Card, CardItem, Body, Content, Thumbnail, Left } from "native-base";
 import { robotoWeights } from "react-native-typography";
-import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
-
+import { ScrollView } from "react-native-gesture-handler";
+//prettier-ignore
 export default class Activity_Info extends React.Component {
   HeaderHeight = () => {
     const headerHeight = useHeaderHeight();
@@ -28,16 +28,33 @@ export default class Activity_Info extends React.Component {
                   </Body>
                 </Left>
               </CardItem>
-              <CardItem style={{ borderRadius: 10, paddingTop: 5 }} activeOpacity={0.6} button onPress={() => Linking.openURL("https://github.com/bleedweedsuz/ApkPopper/blob/master/LICENSE").catch((err) => console.error("Couldn't load page", err))}>
+              <CardItem style={{ borderRadius: 10, paddingTop: 5 }} activeOpacity={0.6} button onPress={() => Linking.openURL("https://github.com/bleedweedsuz/E-Monitor").catch((err) => console.error("Couldn't load page", err))}>
                 <Body>
                   <Text style={[robotoWeights.light, styles.display22]}>You can view this application source code on github</Text>
-                  <Text style={[robotoWeights.light, styles.display3]}>https://github.com/bleedweedsuz/ApkPopper/blob/master/LICENSE</Text>
+                  <Text style={[robotoWeights.light, styles.display3]}>https://github.com/bleedweedsuz/E-Monitor</Text>
                 </Body>
               </CardItem>
-              <CardItem style={{ borderRadius: 10, paddingTop: 0 }} activeOpacity={0.6} button onPress={() => Linking.openURL("https://github.com/bleedweedsuz/ApkPopper/blob/master/LICENSE").catch((err) => console.error("Couldn't load page", err))}>
+              <CardItem style={{ borderRadius: 10, paddingTop: 0 }} activeOpacity={0.6} button onPress={() => Linking.openURL("https://github.com/bleedweedsuz/E-Monitor/blob/master/LICENSE").catch((err) => console.error("Couldn't load page", err))}>
                 <Body>
-                  <Text style={[robotoWeights.light, styles.display22]}>License link:</Text>
-                  <Text style={[robotoWeights.light, styles.display3]}>https://github.com/bleedweedsuz/ApkPopper/blob/master/LICENSE</Text>
+                  <Text style={[robotoWeights.light, styles.display22]}>License link</Text>
+                  <Text style={[robotoWeights.light, styles.display3]}>https://github.com/bleedweedsuz/E-Monitor/blob/master/LICENSE</Text>
+                </Body>
+              </CardItem>
+              <CardItem style={{ borderRadius: 10, paddingTop: 0 }} activeOpacity={0.6} button onPress={() => Linking.openURL("http://www.z-warrior.com/E-Monitor/privacypolicy.html").catch((err) => console.error("Couldn't load page", err))}>
+                <Body>
+                  <Text style={[robotoWeights.light, styles.display22]}>Privacy Policy</Text>
+                  <Text style={[robotoWeights.light, styles.display3]}>http://www.z-warrior.com/E-Monitor/privacypolicy.html</Text>
+                </Body>
+              </CardItem>
+            </Card>
+          </Content>
+
+          <Content>
+            <Card style={{ marginLeft: 8, marginRight: 8, borderRadius: 10, marginTop: 10 }}>
+              <CardItem style={{ borderRadius: 10, paddingBottom: 10 }} activeOpacity={0.6} button onPress={() => Linking.openURL("http://www.z-warrior.com/").catch((err) => console.error("Couldn't load page", err))}>
+                <Body>
+                  <Text style={[robotoWeights.light, styles.display1]}>Find Us</Text>
+                  <Text style={[robotoWeights.light, styles.display4]}>http://www.z-warrior.com/</Text>
                 </Body>
               </CardItem>
             </Card>
