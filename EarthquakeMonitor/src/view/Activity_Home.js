@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Text, View, StyleSheet, TouchableOpacity, Image, Dimensions, StatusBar, RefreshControl } from "react-native";
+import React from "react";
+import { Text, View, StyleSheet, TouchableOpacity, Image, Dimensions, StatusBar, RefreshControl, AsyncStorage} from "react-native";
 import { loadEarthquakeData } from "../utils/Utility";
 import { EARTHQUAKE_API_QUERY } from "../utils/Constants";
 import { CollapsibleHeaderFlatList } from "react-native-collapsible-header-views";
@@ -13,12 +13,15 @@ import { TouchableHighlight } from "react-native-gesture-handler";
 import ContentLoader from "react-native-easy-content-loader";
 import { DUMMY_DATA } from "../utils/Constants";
 import Animated from "react-native-reanimated";
+
 const BOTTOMSHEET_BUTTON_COLOR = "#e13d66";
 const mockData = DUMMY_DATA;
 const BOTTOMSHEET_OFFSET = 25;
+
 export default class Activity_Home extends React.Component {
   _isMounted = false;
   state = {
+    isCheckingForTutorial:false,
     loading: true,
     error: false,
     ApiData: [],
@@ -28,9 +31,13 @@ export default class Activity_Home extends React.Component {
     bottomSheetContainerHeight: 0,
     bottomSheetContainerOpacity: 0,
     bottomSheetVisible: false,
+    fadingAmt: new Animated.Value(1),
+    zindex_animatedView: -10, //Default Back
   };
 
   componentDidMount() {
+    //this.clear();
+    //this.checkTutorialPlayBack();
     this._isMounted = true;
     const funTry = (responseData) => {
       if (this._isMounted) {
@@ -49,6 +56,20 @@ export default class Activity_Home extends React.Component {
   componentWillUnmount() {
     this._isMounted = false;
   }
+
+  //check for tutorial info
+  checkTutorialPlayBack = async() => {
+    this.setState({isCheckingForTutorial:true});
+    const tutorial = await AsyncStorage.getItem('tutorial');
+    if (tutorial == null) { 
+      this.props.navigation.replace("Tutorial", {isFromHelp:false}); 
+    }
+    else{ 
+      this.setState({isCheckingForTutorial:false}); 
+    }
+  }
+
+  //clear = async() => { await AsyncStorage.clear(); } //for test only
 
   onItemClick = (item) => {
     this.props.navigation.navigate("Detail", { data: item, mainData: this.state.ApiData });
@@ -81,7 +102,7 @@ export default class Activity_Home extends React.Component {
 
   bs = React.createRef();
   onFilterClick = () => {
-    this.setState({ bottomSheetContainerOpacity: 1 });
+    this.setState({ bottomSheetContainerOpacity: 1, zindex_animatedView:10 });
     this.bs.current.snapTo(3);
   };
 
@@ -205,36 +226,43 @@ export default class Activity_Home extends React.Component {
 
   //prettier-ignore
   render(){
-   
     return (
-      
       <View style={{ flex: 1, backgroundColor: "#f8f8f8"}}>
-        <StatusBar translucent={true} backgroundColor={"#f8f8f8"} barStyle="dark-content" />
-        <CollapsibleHeaderFlatList
-          disableVirtualization={true}
-          CollapsibleHeaderComponent={
-            <View style={{ height: 100, backgroundColor: "#f8f8f8", paddingTop: 40 }}>
-              <View style={{ flexDirection: "row" }}>
-                <Image style={{ width: 37, height: 37, marginLeft: 15, resizeMode: "center" }} source={require("../../assets/logo-inside.png")} />
-                <View style={{ flex: 1, paddingRight: 18 }}>
-                  <TouchableOpacity style={{marginRight:-5, flex: 1, alignSelf: "flex-end", justifyContent: "center", alignContent: "center" }} onPress={() => this.onFilterClick()}>
-                    <Image style={{ width: 34, height: 34, alignSelf: "flex-end", resizeMode:"center" }} source={require("../../assets/filter.png")} />
-                  </TouchableOpacity>
-                </View>
+        {
+          this.state.isCheckingForTutorial?
+            null
+          :
+            <View style={{flex: 1,}}>
+              <StatusBar translucent={true} backgroundColor={"white"} barStyle="dark-content"/>
+              <Animated.View style={{ alignItems: 'center', width:"100%", height:"100%", position: "absolute", opacity: Animated.sub(0.3, Animated.multiply(this.state.fadingAmt, 10)), zIndex:this.state.zindex_animatedView, backgroundColor:"black"}}></Animated.View>
+                <CollapsibleHeaderFlatList
+                  disableVirtualization={true}
+                  CollapsibleHeaderComponent={
+                    <View style={{ height: 100, backgroundColor: "#f8f8f8", paddingTop: 40 }}>
+                      <View style={{ flexDirection: "row" }}>
+                        <Image style={{ width: 37, height: 37, marginLeft: 15, resizeMode: "center" }} source={require("../../assets/logo-inside.png")} />
+                        <View style={{ flex: 1, paddingRight: 18 }}>
+                          <TouchableOpacity style={{marginRight:-5, flex: 1, alignSelf: "flex-end", justifyContent: "center", alignContent: "center" }} onPress={() => this.onFilterClick()}>
+                            <Image style={{ width: 34, height: 34, alignSelf: "flex-end", resizeMode:"center" }} source={require("../../assets/filter.png")} />
+                          </TouchableOpacity>
+                        </View>
 
-                <TouchableOpacity style={{ marginRight: 20, alignSelf: "center", justifyContent: "center", alignContent: "center" }} onPress={() => this.onInfoClick()}>
-                  <Image style={{ width: 34, height: 34, resizeMode:"center"  }} source={require("../../assets/question.png")} />
-                </TouchableOpacity>
-              </View>
+                        <TouchableOpacity style={{ marginRight: 20, alignSelf: "center", justifyContent: "center", alignContent: "center" }} onPress={() => this.onInfoClick()}>
+                          <Image style={{ width: 34, height: 34, resizeMode:"center"  }} source={require("../../assets/question.png")} />
+                        </TouchableOpacity>
+                      </View>
+                    </View>
+                  }
+                  refreshControl={<RefreshControl progressViewOffset={90} refreshing={this.state.flatListRefresh} onRefresh={() => this.onRefreshFlatList()} />}
+                  headerHeight={100}
+                  data={this.state.ApiData.length === 0 ? mockData : this.state.ApiData}
+                  renderItem={({ item }) => this.cardItem(item)}
+                  extraData={this.state}
+                />
+              <BottomSheet ref={this.bs} onCloseEnd={()=>{ this.setState({zindex_animatedView:-10}) }} enabledInnerScrolling={true} callbackNode={this.state.fadingAmt} enabledContentTapInteraction={false} snapPoints={[0, 0, 0,this.state.bottomSheetContainerHeight]} renderContent={this.renderInner} renderHeader={this.renderHeader}  />
             </View>
-          }
-          refreshControl={<RefreshControl progressViewOffset={90} refreshing={this.state.flatListRefresh} onRefresh={() => this.onRefreshFlatList()} />}
-          headerHeight={100}
-          data={this.state.ApiData.length === 0 ? mockData : this.state.ApiData}
-          renderItem={({ item }) => this.cardItem(item)}
-          extraData={this.state}
-        />
-        <BottomSheet ref={this.bs}  enabledInnerScrolling={true}  enabledContentTapInteraction={false} snapPoints={[0, 0, 0,this.state.bottomSheetContainerHeight]} renderContent={this.renderInner} renderHeader={this.renderHeader}  />
+            
+        }
       </View>
     );
   }

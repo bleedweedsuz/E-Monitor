@@ -14,7 +14,7 @@ export default class Activity_Info extends React.Component {
   render() {
     return (
       <View style={{ backgroundColor: "white", flex: 1 }}>
-        <StatusBar translucent={true} backgroundColor={"transparent"} barStyle="dark-content" />
+        <StatusBar translucent={true} backgroundColor={"transparent"} barStyle="dark-content"/>
         <this.HeaderHeight />
         <ScrollView>
           <Content>
@@ -45,11 +45,23 @@ export default class Activity_Info extends React.Component {
 
           <Content>
             <Card style={{ marginLeft: 8, marginRight: 8, borderRadius: 10, marginTop: 10 }}>
+              <CardItem style={{ borderRadius: 10, paddingBottom: 10 }} activeOpacity={0.6} button onPress={()=> { this.props.navigation.navigate("Tutorial", {isFromHelp:true}) }}>
+                <Body>
+                  <Text style={[robotoWeights.light, styles.display1]}>Tutorial</Text>
+                  <Text style={[robotoWeights.light, styles.display4]}>to understand workflow of this app. </Text>
+                </Body>
+              </CardItem>
+            </Card>
+          </Content>
+
+          <Content>
+            <Card style={{ marginLeft: 8, marginRight: 8, borderRadius: 10, marginTop: 10 }}>
               <CardItem style={{ borderRadius: 10, paddingBottom: 0 }}>
                 <Body>
                   <Text style={[robotoWeights.light, styles.display1]}>Used Libraries and its License</Text>
                 </Body>
               </CardItem>
+              
               <CardItem style={{ borderRadius: 10, paddingTop: 5 }} activeOpacity={0.6} button onPress={() => Linking.openURL("https://github.com/manosim/react-native-base/blob/master/LICENSE").catch((err) => console.error("Couldn't load page", err))}>
                 <Body>
                   <Text style={[robotoWeights.light, styles.display22]}>NativeBase</Text>
@@ -58,11 +70,11 @@ export default class Activity_Info extends React.Component {
                 </Body>
               </CardItem>
 
-              <CardItem style={{ borderRadius: 10, paddingTop: 5 }} activeOpacity={0.6} button onPress={() => Linking.openURL("https://github.com/manosim/react-native-base/blob/master/LICENSE").catch((err) => console.error("Couldn't load page", err))}>
+              <CardItem style={{ borderRadius: 10, paddingTop: 5 }} activeOpacity={0.6} button onPress={() => Linking.openURL("https://reactnavigation.org/").catch((err) => console.error("Couldn't load page", err))}>
                 <Body>
                   <Text style={[robotoWeights.light, styles.display22]}>React Navigation 5</Text>
-                  <Text style={[robotoWeights.light, styles.display3]}>URL: UNKNOWN</Text>
-                  <Text style={[robotoWeights.light, styles.display3]}>License Link: UNKNOWN</Text>
+                  <Text style={[robotoWeights.light, styles.display3]}>URL: https://reactnavigation.org/</Text>
+                  <Text style={[robotoWeights.light, styles.display3]}>GitHub: https://github.com/react-navigation/react-navigation</Text>
                 </Body>
               </CardItem>
 
@@ -152,6 +164,12 @@ const styles = StyleSheet.create({
   display3: {
     marginTop: 1.5,
     textDecorationLine: "underline",
+    marginBottom: 2,
+    fontSize: 12,
+    color: "#E13D66",
+  },
+  display4: {
+    marginTop: 1.5,
     marginBottom: 2,
     fontSize: 12,
     color: "#E13D66",

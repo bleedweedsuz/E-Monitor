@@ -78,7 +78,7 @@ export default class Activity_Detail extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <StatusBar translucent={true} backgroundColor={"transparent"} barStyle="dark-content" />
+        <StatusBar translucent={true} backgroundColor={"transparent"} barStyle="dark-content"/>
         <MapView customMapStyle={mapStyle} style={{ height: Dimensions.get("window").height }} initialRegion={this.INITIAL_REGION}>
           <Marker coordinate={{ latitude: this.state.ApiData.geometry.coordinates[1], longitude: this.state.ApiData.geometry.coordinates[0] }} tracksViewChanges={false}>
             <Text style={{ zIndex: 1, backgroundColor: "#273238", borderRadius: 10, padding: 9, color: "white" }}>{this.state.title}</Text>
