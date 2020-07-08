@@ -13,8 +13,6 @@ import { TouchableHighlight } from "react-native-gesture-handler";
 import ContentLoader from "react-native-easy-content-loader";
 import { DUMMY_DATA } from "../utils/Constants";
 import Animated from "react-native-reanimated";
-import TextTicker from "react-native-text-ticker";
-
 const BOTTOMSHEET_BUTTON_COLOR = "#e13d66";
 const mockData = DUMMY_DATA;
 const BOTTOMSHEET_OFFSET = 25;
@@ -122,6 +120,11 @@ export default class Activity_Home extends React.Component {
   filterData = () => {
     this.bs.current.snapTo(2);
     this.loadingEarthquakeData();
+    this.setState({ zindex_animatedView: -10 });
+  };
+
+  closeBottomSheet = () => {
+    this.bs.current.snapTo(2);
     this.setState({ zindex_animatedView: -10 });
   };
 
@@ -235,7 +238,9 @@ export default class Activity_Home extends React.Component {
           :
             <View style={{flex: 1,}}>
               <StatusBar translucent={true} backgroundColor={"white"} barStyle="dark-content"/>
-              <Animated.View style={{ alignItems: 'center', width:"100%", height:"100%", position: "absolute", opacity: Animated.sub(0.3, Animated.multiply(this.state.fadingAmt, 10)), zIndex:this.state.zindex_animatedView, backgroundColor:"black"}}></Animated.View>
+              <Animated.View style={{ alignItems: 'center', width:"100%", height:"100%", position: "absolute", opacity: Animated.sub(0.3, Animated.multiply(this.state.fadingAmt, 10)), zIndex:this.state.zindex_animatedView, backgroundColor:"black"}}>
+                <TouchableOpacity onPress={this.closeBottomSheet} style={{width:"100%", height:"100%"}}></TouchableOpacity>
+              </Animated.View>
                 <CollapsibleHeaderFlatList
                   disableVirtualization={true}
                   CollapsibleHeaderComponent={
