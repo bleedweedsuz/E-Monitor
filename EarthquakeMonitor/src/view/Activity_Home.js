@@ -84,9 +84,7 @@ export default class Activity_Home extends React.Component {
               <Body>
                 <View>
                   <Text style={[material.display1, styles.display1]}>{"M " + Number(item.properties.mag).toFixed(1)}</Text>
-                  <View>
-                    <TextTicker style={[robotoWeights.light, styles.display2]}>{item.properties.place}</TextTicker>
-                  </View>
+                  <Text style={[robotoWeights.light, styles.display2]}>{item.properties.place}</Text>
                   <View style={{ flexDirection: "row", width: "100%" }}>
                     <View style={{ flex: 1 }}></View>
                     <View>

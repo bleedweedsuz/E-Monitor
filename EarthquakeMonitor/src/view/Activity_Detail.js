@@ -46,12 +46,14 @@ export default class Activity_Detail extends Component {
 
   renderInner = () => (
     <View style={styles.panel}>
-      <Text style={[robotoWeights.light, styles.panelTitle]}>{this.state.title}</Text>
+      <TextTicker style={[robotoWeights.light, styles.panelTitle]}>{this.state.title}</TextTicker>
       <Text style={[robotoWeights.light, styles.display2]}>{this.state.date}</Text>
       <Text style={[robotoWeights.bold, styles.display3]}>{this.state.magnitude}</Text>
       <Text style={[robotoWeights.thin, styles.display4]}>Ritcher Scale</Text>
       <View style={{ justifyContent: "center", alignItems: "center" }}>
-        <TextTicker style={[robotoWeights.light, styles.display5]}>{this.state.place}</TextTicker>
+        <TextTicker duration={3000} style={[robotoWeights.light, styles.display5]}>
+          {this.state.place}
+        </TextTicker>
       </View>
       <Card style={{ marginTop: 55, padding: 13, alignItems: "center" }}>
         <Text style={[robotoWeights.light, styles.display7]}>
@@ -59,7 +61,7 @@ export default class Activity_Detail extends Component {
         </Text>
       </Card>
       <Card style={{ marginTop: 5, padding: 13, alignItems: "center" }}>
-        <Text style={[robotoWeights.light, styles.display7]}>Depth:{this.state.depth} km from Sea level</Text>
+        <Text style={[robotoWeights.light, styles.display7]}>Depth:{this.state.depth} km from Sea</Text>
       </Card>
 
       <TouchableOpacity activeOpacity={0.8} onPress={() => this.loadInBrowser(this.state.details)}>
@@ -115,7 +117,7 @@ const styles = StyleSheet.create({
     right: 0,
   },
   panel: {
-    height: "100%",
+    height: 550,
     padding: 10,
     backgroundColor: "#fff",
   },
