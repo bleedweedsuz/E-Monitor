@@ -13,6 +13,7 @@ import { TouchableHighlight } from "react-native-gesture-handler";
 import ContentLoader from "react-native-easy-content-loader";
 import { DUMMY_DATA } from "../utils/Constants";
 import Animated from "react-native-reanimated";
+import TextTicker from "react-native-text-ticker";
 
 const BOTTOMSHEET_BUTTON_COLOR = "#e13d66";
 const mockData = DUMMY_DATA;
@@ -83,7 +84,9 @@ export default class Activity_Home extends React.Component {
               <Body>
                 <View>
                   <Text style={[material.display1, styles.display1]}>{"M " + Number(item.properties.mag).toFixed(1)}</Text>
-                  <Text style={[robotoWeights.light, styles.display2]}>{item.properties.place}</Text>
+                  <View>
+                    <TextTicker style={[robotoWeights.light, styles.display2]}>{item.properties.place}</TextTicker>
+                  </View>
                   <View style={{ flexDirection: "row", width: "100%" }}>
                     <View style={{ flex: 1 }}></View>
                     <View>
@@ -121,6 +124,7 @@ export default class Activity_Home extends React.Component {
   filterData = () => {
     this.bs.current.snapTo(2);
     this.loadingEarthquakeData();
+    this.setState({ zindex_animatedView: -10 });
   };
 
   renderHeader = () => (

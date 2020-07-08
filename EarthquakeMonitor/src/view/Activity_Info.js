@@ -150,6 +150,14 @@ export default class Activity_Info extends React.Component {
                   <Text style={[robotoWeights.light, styles.display3]}>License Link: https://github.com/jfilter/react-native-onboarding-swiper/blob/master/LICENSE</Text>
                 </Body>
               </CardItem>
+
+              <CardItem style={{ borderRadius: 10, paddingTop: 5 }} activeOpacity={0.6} button onPress={() => Linking.openURL("https://github.com/deanhet/react-native-text-ticker/blob/master/LICENSE").catch((err) => console.error("Couldn't load page", err))}>
+                <Body>
+                  <Text style={[robotoWeights.light, styles.display22]}>react-native-text-ticker</Text>
+                  <Text style={[robotoWeights.light, styles.display3]}>URL: https://github.com/deanhet/react-native-text-ticker</Text>
+                  <Text style={[robotoWeights.light, styles.display3]}>License Link: https://github.com/deanhet/react-native-text-ticker/blob/master/LICENSE</Text>
+                </Body>
+              </CardItem>
             </Card>
           </Content>
 

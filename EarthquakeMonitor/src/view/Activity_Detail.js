@@ -6,6 +6,7 @@ import { robotoWeights } from "react-native-typography";
 import moment from "moment";
 import { Card, Icon } from "native-base";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import TextTicker from "react-native-text-ticker";
 
 var mapStyle = require("../utils/mapstyle.json");
 export default class Activity_Detail extends Component {
@@ -49,7 +50,9 @@ export default class Activity_Detail extends Component {
       <Text style={[robotoWeights.light, styles.display2]}>{this.state.date}</Text>
       <Text style={[robotoWeights.bold, styles.display3]}>{this.state.magnitude}</Text>
       <Text style={[robotoWeights.thin, styles.display4]}>Ritcher Scale</Text>
-      <Text style={[robotoWeights.light, styles.display5]}>{this.state.place}</Text>
+      <View style={{ justifyContent: "center", alignItems: "center" }}>
+        <TextTicker style={[robotoWeights.light, styles.display5]}>{this.state.place}</TextTicker>
+      </View>
       <Card style={{ marginTop: 55, padding: 13, alignItems: "center" }}>
         <Text style={[robotoWeights.light, styles.display7]}>
           Location: {this.state.lat}, {this.state.lon}
@@ -78,7 +81,7 @@ export default class Activity_Detail extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <StatusBar translucent={true} backgroundColor={"transparent"} barStyle="dark-content"/>
+        <StatusBar translucent={true} backgroundColor={"transparent"} barStyle="dark-content" />
         <MapView customMapStyle={mapStyle} style={{ height: Dimensions.get("window").height }} initialRegion={this.INITIAL_REGION}>
           <Marker coordinate={{ latitude: this.state.ApiData.geometry.coordinates[1], longitude: this.state.ApiData.geometry.coordinates[0] }} tracksViewChanges={false}>
             <Text style={{ zIndex: 1, backgroundColor: "#273238", borderRadius: 10, padding: 9, color: "white" }}>{this.state.title}</Text>
